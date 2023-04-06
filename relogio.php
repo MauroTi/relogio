@@ -65,37 +65,37 @@
       color:  #4682B4;
     }
 
-  .container{
-    filter: invert(var(--invert-value, 100%));
-    background-color: #DCDCDC;
-  }
-  #invert-slider {
-  width: 200px;
-  height: 20px;
-  background-color: #ccc;
-  border-radius: 10px;
-  outline: none;
-  margin-left: 10px;
-  margin-right: 10px;
-}
+    .container{
+      filter: invert(var(--invert-value, 100%));
+      background-color: #DCDCDC;
+    }
+    #invert-slider {
+      width: 200px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 10px;
+      outline: none;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
 
-#invert-slider::-webkit-slider-thumb {
-  width: 20px;
-  height: 20px;
-  background-color: #4682B4;
-  border-radius: 50%;
-  -webkit-appearance: none;
-  margin-top: 0px;
-}
+    #invert-slider::-webkit-slider-thumb {
+      width: 20px;
+      height: 20px;
+      background-color: #4682B4;
+      border-radius: 50%;
+      -webkit-appearance: none;
+      margin-top: 0px;
+    }
 
-#invert-slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background-color: #4682B4;
-  border-radius: 50%;
-  appearance: none;
-  margin-top: -8px;
-}
+    #invert-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background-color: #4682B4;
+      border-radius: 50%;
+      appearance: none;
+      margin-top: -8px;
+    }
 
 
 
@@ -111,6 +111,12 @@
     <div id="clock">     
       <input type="text" name="datetime" id="datetime" value="" readonly style="border: none; font-size: 70px; text-align: center;">
     </div>
+    <form id="alarm-form">
+      <label for="alarm-time">Horário do alarme:</label>
+      <input type="time" id="alarm-time">
+      <button type="submit">Programar</button>
+    </form>
+
 
     <script>
      function updateDateTime() {
@@ -122,8 +128,30 @@
     }
     setInterval(updateDateTime, 1000);
 
-  </script>
-  <div>
+    var alarmTime;
+
+    document.getElementById("alarm-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var timeInput = document.getElementById("alarm-time");
+      var timeString = timeInput.value;
+      var now = new Date();
+      var [hours, minutes] = timeString.split(":");
+      alarmTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+    });
+
+    function checkAlarm() {
+      var currentTime = new Date();
+      if (alarmTime && currentTime >= alarmTime) {
+        document.body.style.backgroundColor = document.body.style.backgroundColor == "red" ? "blue" : "red";
+    alarmTime.setDate(alarmTime.getDate() + 1); // adicione mais um dia ao alarme para que ele continue a disparar
+  }
+  setTimeout(checkAlarm, 1000);
+}
+
+checkAlarm();
+
+</script>
+<div>
   <label for="invert-slider">Mudança de Tonalidade</label>
   <input type="range" id="invert-slider" min="0" max="100" value="100" step="1" oninput="document.documentElement.style.setProperty('--invert-value', this.value + '%');">
 </div>
