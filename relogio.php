@@ -96,6 +96,15 @@
       appearance: none;
       margin-top: -8px;
     }
+    /*.cancel-alarm {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }*/
+
 
 
 
@@ -115,6 +124,8 @@
       <label for="alarm-time">Horário do alarme:</label>
       <input type="time" id="alarm-time">
       <button type="submit">Programar</button>
+      <button type="button" class="cancel-alarm">Cancelar Alarme</button>
+
     </form>
 
 
@@ -145,6 +156,12 @@
         document.body.style.backgroundColor = document.body.style.backgroundColor == "red" ? "blue" : "red";
     alarmTime.setDate(alarmTime.getDate() + 1); // adicione mais um dia ao alarme para que ele continue a disparar
   }
+  const cancelButton = document.querySelector('.cancel-alarm');
+  cancelButton.addEventListener('click', cancelAlarm);
+  function cancelAlarm() {
+    document.querySelector('#alarm-time').value = '';
+  }
+
   setTimeout(checkAlarm, 1000);
 }
 
