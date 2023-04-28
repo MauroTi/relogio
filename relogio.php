@@ -2,7 +2,7 @@
 <html class="container">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Relógio</title>
   <style>
     #logo:hover {
       animation: shake 0.5s;
@@ -105,6 +105,31 @@
       width: 100%;
       height: 100px;
       
+    }
+
+    .weather-widget {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      width: 200px;
+      height: 100px;
+    }
+
+    .weather-icon {
+      background-image: url('icons/01d.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+    }
+
+    .weather-temp {
+      font-size: 30px;
+      margin-left: 10px;
     }
 
 
@@ -215,14 +240,95 @@ checkAlarm();
 
 </div>
 <body>
+
+
+  <div class="weather-widget">
+    <div class="weather-icon"><script>
+      const apiKey = '567867fead8ac7c32898e5f6e014159c';
+      const city = 'Porto Alegre';
+
+      const weatherIcon = document.querySelector('.weather-icon');
+      const weatherTemp = document.querySelector('.weather-temp');
+
+      function getWeather() {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          const iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+          weatherIcon.style.backgroundImage = `url(${iconUrl})`;
+          weatherTemp.textContent = `${Math.round(data.main.temp)}°C`;
+        })
+        .catch(error => console.log(error));
+      }
+
+      getWeather();
+      setInterval(getWeather, 60000);
+
+    </script></div>
+    <div class="weather-temp"></div>
+  </div>
   <!-- conteúdo da página -->
   <div id="espaco-rodape"></div>
-<!-- weather widget start --><div id="m-booked-prime-33718"> <div class="booked-wzsp-prime-in"> <div class="booked-wzsp-prime-data"> <div class="booked-wzsp-prime-img wt18"></div> <div class="booked-wzsp-day-val"> <div class="booked-wzsp-day-number"><span class="plus">+</span>24</div> <div class="booked-wzsp-day-dergee"> <div class="booked-wzsp-day-dergee-val">&deg;</div> <div class="booked-wzsp-day-dergee-name">C</div> </div> </div> </div> </div> </div> </div><script type="text/javascript"> var css_file=document.createElement("link"); var widgetUrl = location.href; css_file.setAttribute("rel","stylesheet"); css_file.setAttribute("type","text/css"); css_file.setAttribute("href",'https://s.bookcdn.com/css/w/booked-wzs-widget-prime.css?v=0.0.1'); document.getElementsByTagName("head")[0].appendChild(css_file); function setWidgetData_33718(data) { if(typeof(data) != 'undefined' && data.results.length > 0) { for(var i = 0; i < data.results.length; ++i) { var objMainBlock = document.getElementById('m-booked-prime-33718'); if(objMainBlock !== null) { var copyBlock = document.getElementById('m-bookew-weather-copy-'+data.results[i].widget_type); objMainBlock.innerHTML = data.results[i].html_code; if(copyBlock !== null) objMainBlock.appendChild(copyBlock); } } } else { alert('data=undefined||data.results is empty'); } } var widgetSrc = "https://widgets.booked.net/weather/info?action=get_weather_info;ver=7;cityID=43279;type=5;scode=44296;ltid=3458;domid=w209;anc_id=61960;countday=undefined;cmetric=1;wlangID=1;color=137AE9;wwidth=160;header_color=ffffff;text_color=333333;link_color=08488D;border_form=1;footer_color=ffffff;footer_text_color=333333;transparent=0;v=0.0.1";widgetSrc += ';ref=' + widgetUrl;widgetSrc += ';rand_id=33718';var weatherBookedScript = document.createElement("script"); weatherBookedScript.setAttribute("type", "text/javascript"); weatherBookedScript.src = widgetSrc; document.body.appendChild(weatherBookedScript) </script><!-- weather widget end -->
- 
+  <!-- weather widget start --><script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>  
+  
+<img src='' id="icone" width="60px">
+<br/>
+<strong>PORTO ALEGRE</strong><br/>
+<span id="temperatura"></span><br/>
+<span id="clima"></span>
+
+<script>
+$(document).ready(function(){
+  $.get( "https://api.openweathermap.org/data/2.5/weather?q=Porto%20Alegre,br&lang=pt&units=metric&appid=567867fead8ac7c32898e5f6e014159c", function(data) {
+    $('#temperatura').html(data.main.temp);  
+    $('#clima').html(data.weather[0].description);  
+    $('#icone').attr('src','https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
+  }).fail(function() {
+    $('#temperatura').html('Erro ao carregar temperatura');
+    $('#clima').html('Erro ao carregar clima');
+  });
+});
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  
+<strong>Cidade:</strong> <span id="cidade"></span><br/>
+<strong>Horário:</strong> <span id="horario"></span><br/>
+<strong>Temperatura:</strong> <span id="temperatura"></span><br/>
+<strong>Clima:</strong> <span id="clima"></span><br/>
+
+<script>
+$(document).ready(function(){
+  $.get( "https://api.openweathermap.org/data/2.5/weather?q=Porto%20Alegre,br&lang=pt&units=metric&appid=567867fead8ac7c32898e5f6e014159c", function(data) {
+    $('#cidade').html(data.name);  
+    var dataAtual = new Date();
+    var horaAtual = dataAtual.getHours() + ':' + dataAtual.getMinutes();
+    $('#horario').html(horaAtual);
+    $('#temperatura').html(data.main.temp + ' °C');  
+    $('#clima').html(data.weather[0].description);  
+  }).fail(function() {
+    $('#cidade').html('Erro ao carregar cidade');
+    $('#horario').html('Erro ao carregar horário');
+    $('#temperatura').html('Erro ao carregar temperatura');
+    $('#clima').html('Erro ao carregar clima');
+  });
+});
+</script>
+
+<!-- weather widget end -->
+
   <div id="rodape">
-    
+
     <div id="cont_c79162f30b9a216bb346ceac6ebf111c"><script type="text/javascript" async src="https://www.tempo.com/wid_loader/c79162f30b9a216bb346ceac6ebf111c"></script></div>
   </div>
+
+
+
 </body>
 
 </body>
