@@ -2,7 +2,7 @@
 <html class="container">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relógio</title>
+  <title>Relógio</title>
   <style>
     #logo:hover {
       animation: shake 0.5s;
@@ -169,6 +169,10 @@
         font-size: 18vw;
       }
     }
+    strong{
+      font-size: 2vw;
+      color: #4682B4;
+    }
 
 
 
@@ -275,52 +279,52 @@ checkAlarm();
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>  
   
-<img src='' id="icone" width="60px">
-<br/>
-<strong>PORTO ALEGRE</strong><br/>
-<span id="temperatura"></span><br/>
-<span id="clima"></span>
+  <img src='' id="icone" width="90px">
+  <br/>
+  <strong>PORTO ALEGRE</strong><br/>
+  <strong><span id="temperatura"></span></strong><br/>
+  <strong>Clima:<span id="clima"></span></strong><br/>
 
-<script>
-$(document).ready(function(){
-  $.get( "https://api.openweathermap.org/data/2.5/weather?q=Porto%20Alegre,br&lang=pt&units=metric&appid=567867fead8ac7c32898e5f6e014159c", function(data) {
-    $('#temperatura').html(data.main.temp);  
-    $('#clima').html(data.weather[0].description);  
-    $('#icone').attr('src','https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
-  }).fail(function() {
-    $('#temperatura').html('Erro ao carregar temperatura');
-    $('#clima').html('Erro ao carregar clima');
-  });
-});
-</script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
   
-<strong>Cidade:</strong> <span id="cidade"></span><br/>
-<strong>Horário:</strong> <span id="horario"></span><br/>
-<strong>Temperatura:</strong> <span id="temperatura"></span><br/>
-<strong>Clima:</strong> <span id="clima"></span><br/>
+<!--<strong>Cidade:</strong> <span id="cidade"></span><br/>-->
+<strong>Horário: <span id="horario"></span></strong><br/>
+
 
 <script>
 $(document).ready(function(){
-  $.get( "https://api.openweathermap.org/data/2.5/weather?q=Porto%20Alegre,br&lang=pt&units=metric&appid=567867fead8ac7c32898e5f6e014159c", function(data) {
-    $('#cidade').html(data.name);  
+  function getWeather() {
+    $.get( "https://api.openweathermap.org/data/2.5/weather?q=Porto%20Alegre,br&lang=pt&units=metric&appid=567867fead8ac7c32898e5f6e014159c", function(data) {
+      //$('#cidade').html(data.name);  
+      var dataAtual = new Date();
+      var horaAtual = ('0' + dataAtual.getHours()).slice(-2) + ':' + ('0' + dataAtual.getMinutes()).slice(-2) + ':' + ('0' + dataAtual.getSeconds()).slice(-2);
+      $('#horario').html(horaAtual);
+      $('#temperatura').html(data.main.temp + ' °C');  
+      $('#clima').html(data.weather[0].description);  
+    }).fail(function() {
+      $('#cidade').html('Erro ao carregar cidade');
+      $('#horario').html('Erro ao carregar horário');
+      $('#temperatura').html('Erro ao carregar temperatura');
+      $('#clima').html('Erro ao carregar clima');
+    });
+  }
+  getWeather();
+  setInterval(getWeather, 10000);
+  setInterval(function(){
     var dataAtual = new Date();
-    var horaAtual = dataAtual.getHours() + ':' + dataAtual.getMinutes();
+    var horaAtual = ('0' + dataAtual.getHours()).slice(-2) + ':' + ('0' + dataAtual.getMinutes()).slice(-2) + ':' + ('0' + dataAtual.getSeconds()).slice(-2);
     $('#horario').html(horaAtual);
-    $('#temperatura').html(data.main.temp + ' °C');  
-    $('#clima').html(data.weather[0].description);  
-  }).fail(function() {
-    $('#cidade').html('Erro ao carregar cidade');
-    $('#horario').html('Erro ao carregar horário');
-    $('#temperatura').html('Erro ao carregar temperatura');
-    $('#clima').html('Erro ao carregar clima');
-  });
+  }, 1000);
 });
+
 </script>
 
-<!-- weather widget end -->
+
+
+  <!-- weather widget end -->
 
   <div id="rodape">
 
