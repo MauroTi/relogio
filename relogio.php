@@ -99,38 +99,54 @@
       margin-top: -8px;
     }
 
-    #rodape {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100px;
-      
-    }
+   #rodape {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 5vw;
+  width: 100%;
+  height: 10vh;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-    .weather-widget {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #f4f4f4;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      width: 200px;
-      height: 100px;
-    }
 
-    .weather-icon {
-      background-image: url('icons/01d.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      width: 50px;
-      height: 50px;
-    }
+  .weather-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin-left: 20px;
+}
 
-    .weather-temp {
-      font-size: 30px;
-      margin-left: 10px;
-    }
+
+.weather-icon {
+  background-image: url('icons/01d.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 80px;
+  height: 80px;
+}
+
+.weather-temp {
+  font-size: 5vw;
+  margin-top: 10px;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 
 
     /*.cancel-alarm {
@@ -186,9 +202,10 @@
       <a href="http://www.alfatek.com.br"><img id="logo" src="logo.png" alt="Logo"></a>
       <label for="datetime" style="display: none;"></label>
     </div>
-    <div id="clock">     
-      <input type="text" name="datetime" id="datetime" value="" readonly style="border: none; font-size: 70px; text-align: center;">
-    </div>
+   <div id="clock">
+  <input type="text" name="datetime" id="datetime" value="" readonly style="border: none; font-size: 5vw; text-align: center;">
+</div>
+
     <form id="alarm-form">
       <label for="alarm-time">Horário do alarme:</label>
       <input type="time" id="alarm-time">
@@ -291,7 +308,7 @@ checkAlarm();
   crossorigin="anonymous"></script>
   
 <!--<strong>Cidade:</strong> <span id="cidade"></span><br/>-->
-<strong>Horário: <span id="horario"></span></strong><br/>
+<!--<strong>Horário: <span id="horario"></span></strong><br/>-->
 
 
 <script>
