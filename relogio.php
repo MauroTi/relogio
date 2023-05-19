@@ -299,7 +299,7 @@ checkAlarm();
   <img src='' id="icone" width="90px">
   <br/>
   <strong>PORTO ALEGRE</strong><br/>
-  <strong><span id="temperatura"></span></strong><br/>
+  <strong><span id="temperatura" style="font-size: 5vw;"></span></strong><br/>
   <strong>Clima:<span id="clima"></span></strong><br/>
 
 
