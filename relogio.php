@@ -99,53 +99,58 @@
       margin-top: -8px;
     }
 
-   #rodape {
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 5vw;
-  width: 100%;
-  height: 10vh;
-  background-color: #f4f4f4;
-  text-align: center;
-  padding: 20px;
-  box-sizing: border-box;
-}
+    #rodape {
+      position: fixed;
+      bottom: 0;
+      margin-bottom: 18vw;
+      width: 100%;
+      height: 10vh;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+    }
 
 
-  .weather-widget {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  margin-left: 20px;
-}
+    .weather-widget {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-left: 20px;
+    }
 
 
-.weather-icon {
-  background-image: url('icons/01d.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  width: 80px;
-  height: 80px;
-}
+    .weather-icon {
+      background-image: url('icons/01d.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      width: 80px;
+      height: 80px;
+    }
 
-.weather-temp {
-  font-size: 5vw;
-  margin-top: 10px;
-}
+    .weather-temp {
+      font-size: 5vw;
+      margin-top: 10px;
+    }
 
-body, html {
-  margin: 0;
-  padding: 0;
-}
+    #temperatura{
+      margin-right: 1vw;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
 
 
 
@@ -202,9 +207,9 @@ body, html {
       <a href="http://www.alfatek.com.br"><img id="logo" src="logo.png" alt="Logo"></a>
       <label for="datetime" style="display: none;"></label>
     </div>
-   <div id="clock">
-  <input type="text" name="datetime" id="datetime" value="" readonly style="border: none; font-size: 5vw; text-align: center;">
-</div>
+    <div id="clock">
+      <input type="text" name="datetime" id="datetime" value="" readonly style="border: none; font-size: 5vw; text-align: center;">
+    </div>
 
     <form id="alarm-form">
       <label for="alarm-time">Horário do alarme:</label>
@@ -264,7 +269,18 @@ checkAlarm();
 
 
   <div class="weather-widget">
-    <div class="weather-icon"><script>
+
+    <!-- <div class="weather-temp"></div>  -->
+  </div>
+  <!-- conteúdo da página -->
+
+  
+
+  <div id="rodape">
+<!--   <strong><span id="temp" style="font-size: 5vw;"></span></strong>
+  <div id="cont_c79162f30b9a216bb346ceac6ebf111c"><script type="text/javascript" async src="https://www.tempo.com/wid_loader/c79162f30b9a216bb346ceac6ebf111c"></script></div>  -->
+
+<div class="weather-icon"><script>
       const apiKey = '567867fead8ac7c32898e5f6e014159c';
       const city = 'Porto Alegre';
 
@@ -287,66 +303,68 @@ checkAlarm();
       setInterval(getWeather, 60000);
 
     </script></div>
-    <div class="weather-temp"></div>
-  </div>
-  <!-- conteúdo da página -->
-  <div id="espaco-rodape"></div>
-  <!-- weather widget start --><script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>  
-  
-  <img src='' id="icone" width="90px">
-  <br/>
-  <strong>PORTO ALEGRE</strong><br/>
-  <strong><span id="temperatura" style="font-size: 5vw;"></span></strong><br/>
-  <strong>Clima:<span id="clima"></span></strong><br/>
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  
-<!--<strong>Cidade:</strong> <span id="cidade"></span><br/>-->
-<!--<strong>Horário: <span id="horario"></span></strong><br/>-->
+  <div id="espaco-rodape">
+    <!-- weather widget start --><script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>  
+
+    <img src='' id="icone" width="90px">
+    <br/>
+    <strong>PORTO ALEGRE</strong><br/>
+    <strong><span id="temperatura" style="font-size: 5vw; color: black;"></span></strong><br/>
+    <strong>Clima:<span id="clima"></span></strong>
 
 
-<script>
-$(document).ready(function(){
-  function getWeather() {
-    $.get( "https://api.openweathermap.org/data/2.5/weather?q=Porto%20Alegre,br&lang=pt&units=metric&appid=567867fead8ac7c32898e5f6e014159c", function(data) {
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <!--<strong>Cidade:</strong> <span id="cidade"></span><br/>-->
+    <!--<strong>Horário: <span id="horario"></span></strong><br/>-->
+
+
+    <script>
+      $(document).ready(function(){
+        function getWeather() {
+          $.get( "https://api.openweathermap.org/data/2.5/weather?q=Porto%20Alegre,br&lang=pt&units=metric&appid=567867fead8ac7c32898e5f6e014159c", function(data) {
       //$('#cidade').html(data.name);  
-      var dataAtual = new Date();
-      var horaAtual = ('0' + dataAtual.getHours()).slice(-2) + ':' + ('0' + dataAtual.getMinutes()).slice(-2) + ':' + ('0' + dataAtual.getSeconds()).slice(-2);
-      $('#horario').html(horaAtual);
-      $('#temperatura').html(data.main.temp + ' °C');  
-      $('#clima').html(data.weather[0].description);  
-    }).fail(function() {
-      $('#cidade').html('Erro ao carregar cidade');
-      $('#horario').html('Erro ao carregar horário');
-      $('#temperatura').html('Erro ao carregar temperatura');
-      $('#clima').html('Erro ao carregar clima');
-    });
-  }
-  getWeather();
-  setInterval(getWeather, 10000);
-  setInterval(function(){
-    var dataAtual = new Date();
-    var horaAtual = ('0' + dataAtual.getHours()).slice(-2) + ':' + ('0' + dataAtual.getMinutes()).slice(-2) + ':' + ('0' + dataAtual.getSeconds()).slice(-2);
-    $('#horario').html(horaAtual);
-  }, 1000);
-});
+            var dataAtual = new Date();
+            var horaAtual = ('0' + dataAtual.getHours()).slice(-2) + ':' + ('0' + dataAtual.getMinutes()).slice(-2) + ':' + ('0' + dataAtual.getSeconds()).slice(-2);
+            $('#horario').html(horaAtual);
+            $('#temperatura').html(data.main.temp + ' °C');
+            $('#clima').html(data.weather[0].description);  
+          }).fail(function() {
+            $('#cidade').html('Erro ao carregar cidade');
+            $('#horario').html('Erro ao carregar horário');
+            $('#temperatura').html('Erro ao carregar temperatura');
+            $('#clima').html('Erro ao carregar clima');
+          });
+        }
+        getWeather();
+        setInterval(getWeather, 10000);
+        setInterval(function(){
+          var dataAtual = new Date();
+          var horaAtual = ('0' + dataAtual.getHours()).slice(-2) + ':' + ('0' + dataAtual.getMinutes()).slice(-2) + ':' + ('0' + dataAtual.getSeconds()).slice(-2);
+          $('#horario').html(horaAtual);
+        }, 1000);
+      });
 
-</script>
+    </script>
 
 
 
-  <!-- weather widget end -->
-
-  <div id="rodape">
-
-    <div id="cont_c79162f30b9a216bb346ceac6ebf111c"><script type="text/javascript" async src="https://www.tempo.com/wid_loader/c79162f30b9a216bb346ceac6ebf111c"></script></div>
+    <!-- weather widget end -->
   </div>
+  
+  <div id="cont_1a99219bfe1681b8112996083265a113"><script type="text/javascript" async src="https://www.tempo.com/wid_loader/1a99219bfe1681b8112996083265a113"></script></div>
+</div>
+ <!-- <div class="clima">
+   <div id="ww_3cb086f2ec02b" v='1.3' loc='id' a='{"t":"responsive","lang":"pt","sl_lpl":1,"ids":["wl3184"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF","cl_font":"#000000","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","cl_odd":"#0000000a"}'><a href="https://weatherwidget.org/ru/" id="ww_3cb086f2ec02b_u" target="_blank">Бесплатный информер погоды для сайта</a></div><script async src="https://app1.weatherwidget.org/js/?id=ww_3cb086f2ec02b"></script>  -->
+
+ </div>
 
 
 
