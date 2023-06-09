@@ -2,203 +2,9 @@
 <html class="container">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Relógio</title>
-  <style>
-    #logo:hover {
-      animation: shake 0.5s;
-      animation-iteration-count: infinite;
-    }
-    @keyframes shake {
-      0% { transform: translate(1px, 1px) rotate(0deg); }
-      10% { transform: translate(-1px, -2px) rotate(-1deg); }
-      20% { transform: translate(-3px, 0px) rotate(1deg); }
-      30% { transform: translate(3px, 2px) rotate(0deg); }
-      40% { transform: translate(1px, -1px) rotate(1deg); }
-      50% { transform: translate(-1px, 2px) rotate(-1deg); }
-      60% { transform: translate(-3px, 1px) rotate(0deg); }
-      70% { transform: translate(3px, 1px) rotate(-1deg); }
-      80% { transform: translate(-1px, -1px) rotate(1deg); }
-      90% { transform: translate(1px, 2px) rotate(0deg); }
-      100% { transform: translate(1px, -2px) rotate(-1deg); }
-    }
-
-
-    .transition
-    {
-      transition:  transform 1s;
-    }
-
-    .transition:hover
-    {
-
-
-      transform: scale(1.4);
-    }
-
-    #logo {
-      width: 900px;
-      height: 200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    #header {
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #clock {
-      position: absolute;
-      // bottom: 0;
-      margin-top: 50px;
-      width: 100%;
-      text-align: center;
-      color: blue;
-    }
-
-    #clock input {
-      border: none;
-      font-size: 70px;
-      text-align: center;
-      color:  #4682B4;
-    }
-
-    .container{
-      filter: invert(var(--invert-value, 100%));
-      background-color: #FFFFFF;
-    }
-    #invert-slider {
-      width: 200px;
-      height: 20px;
-      background-color: #ccc;
-      border-radius: 10px;
-      outline: none;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-
-    #invert-slider::-webkit-slider-thumb {
-      width: 20px;
-      height: 20px;
-      background-color: #4682B4;
-      border-radius: 50%;
-      -webkit-appearance: none;
-      margin-top: 0px;
-    }
-
-    #invert-slider::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      background-color: #4682B4;
-      border-radius: 50%;
-      appearance: none;
-      margin-top: -8px;
-    }
-
-    #rodape {
-      position: fixed;
-      bottom: 0;
-      margin-bottom: 18vw;
-      width: 100%;
-      height: 10vh;
-      background-color: #f4f4f4;
-      text-align: center;
-      padding: 10px;
-      box-sizing: border-box;
-      display: flex;
-    }
-
-
-    .weather-widget {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      background-color: #f4f4f4;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 200px;
-      height: auto;
-      margin-left: 20px;
-    }
-
-
-    .weather-icon {
-      background-image: url('icons/01d.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      width: 80px;
-      height: 80px;
-    }
-
-    .weather-temp {
-      font-size: 5vw;
-      margin-top: 10px;
-    }
-
-    #temperatura{
-      margin-right: 1vw;
-    }
-
-    body, html {
-      margin: 0;
-      padding: 0;
-    }
-
-
-
-    /*.cancel-alarm {
-      background-color: #e74c3c;
-      color: white;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }*/
-    @media screen and (max-width: 768px) {
-      #logo {
-        width: 100%;
-      }
-
-      #clock {
-        font-size: 7vw;
-      }
-
-      #clock input {
-        font-size: 12vw;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      #logo {
-        width: 100%;
-      }
-
-      #clock {
-        font-size: 10vw;
-        margin-top: 10%;
-      }
-
-      #clock input {
-        font-size: 18vw;
-      }
-    }
-    strong{
-      font-size: 2vw;
-      color: #4682B4;
-    }
-
-
-
-
-  </style>
+  
   <link href="logo.css" rel="">
 </head>
 <body>
@@ -280,29 +86,29 @@ checkAlarm();
 <!--   <strong><span id="temp" style="font-size: 5vw;"></span></strong>
   <div id="cont_c79162f30b9a216bb346ceac6ebf111c"><script type="text/javascript" async src="https://www.tempo.com/wid_loader/c79162f30b9a216bb346ceac6ebf111c"></script></div>  -->
 
-<div class="weather-icon"><script>
-      const apiKey = '567867fead8ac7c32898e5f6e014159c';
-      const city = 'Porto Alegre';
+  <div class="weather-icon"><script>
+    const apiKey = '567867fead8ac7c32898e5f6e014159c';
+    const city = 'Porto Alegre';
 
-      const weatherIcon = document.querySelector('.weather-icon');
-      const weatherTemp = document.querySelector('.weather-temp');
+    const weatherIcon = document.querySelector('.weather-icon');
+    const weatherTemp = document.querySelector('.weather-temp');
 
-      function getWeather() {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          const iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-          weatherIcon.style.backgroundImage = `url(${iconUrl})`;
-          weatherTemp.textContent = `${Math.round(data.main.temp)}°C`;
-        })
-        .catch(error => console.log(error));
-      }
+    function getWeather() {
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        const iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+        weatherIcon.style.backgroundImage = `url(${iconUrl})`;
+        weatherTemp.textContent = `${Math.round(data.main.temp)}°C`;
+      })
+      .catch(error => console.log(error));
+    }
 
-      getWeather();
-      setInterval(getWeather, 60000);
+    getWeather();
+    setInterval(getWeather, 60000);
 
-    </script></div>
+  </script></div>
 
 
   <div id="espaco-rodape">
@@ -352,6 +158,33 @@ checkAlarm();
         }, 1000);
       });
 
+      function alternarDiv() {
+        var div = document.getElementById("cont_1a99219bfe1681b8112996083265a113");
+        var botao = document.getElementById("botao");
+
+        if (div.style.display === "none") {
+          div.style.display = "block";
+          botao.textContent = "Ocultar";
+        } else {
+          div.style.display = "none";
+          botao.textContent = "Mostrar";
+        }
+      }
+
+// Verificar o estado inicial da div e atualizar o texto do botão
+      window.addEventListener("DOMContentLoaded", function() {
+        var div = document.getElementById("cont_1a99219bfe1681b8112996083265a113");
+        var botao = document.getElementById("botao");
+
+        if (getComputedStyle(div).display === "none") {
+          botao.textContent = "Mostrar";
+        } else {
+          botao.textContent = "Ocultar";
+        }
+      });
+
+
+
     </script>
 
 
@@ -359,6 +192,9 @@ checkAlarm();
     <!-- weather widget end -->
   </div>
   
+  
+  <button onclick="alternarDiv()" id="botao">Mostrar</button>
+
   <div id="cont_1a99219bfe1681b8112996083265a113"><script type="text/javascript" async src="https://www.tempo.com/wid_loader/1a99219bfe1681b8112996083265a113"></script></div>
 </div>
  <!-- <div class="clima">
