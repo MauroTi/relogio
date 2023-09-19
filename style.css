@@ -53,11 +53,12 @@
       width: 100%;
       text-align: center;
       color: blue;
+      display: grid;
     }
 
     #clock input {
       border: none;
-      font-size: 70px;
+      font-size: 7vw;
       text-align: center;
       color:  #4682B4;
     }
@@ -163,7 +164,7 @@
       }
 
       #clock {
-        font-size: 7vw;
+        font-size: 8vw !important;
       }
 
       #clock input {

@@ -14,7 +14,7 @@
       <label for="datetime" style="display: none;"></label>
     </div>
     <div id="clock">
-      <input type="text" name="datetime" id="datetime" value="" readonly style="border: none; font-size: 5vw; text-align: center;">
+      <input type="text" name="datetime" id="datetime" value="" readonly style="border: none; font-size: 8vw; text-align: center;">
     </div>
 
     <form id="alarm-form">
@@ -22,47 +22,72 @@
       <input type="time" id="alarm-time">
       <button type="submit">Programar</button>
       <button type="button" class="cancel-alarm">Cancelar Alarme</button>
+      <button onclick="stopColorChange()">Encerra alarme</button>
+
 
     </form>
 
 
     <script>
-     function updateDateTime() {
-      var date = new Date();
-      var options = {weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
-      var dateString = date.toLocaleDateString('pt-BR', options);
-      var dateTimeField = document.getElementById("datetime");
-      dateTimeField.value = dateString;
-    }
-    setInterval(updateDateTime, 1000);
+    function updateDateTime() {
+  var date = new Date();
+  var options = {
+    weekday: 'short',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+  };
+  var dateString = date.toLocaleDateString('pt-BR', options);
+  var dateTimeField = document.getElementById("datetime");
+  dateTimeField.value = dateString;
+}
+setInterval(updateDateTime, 1000);
 
-    var alarmTime;
+var alarmTime;
 
-    document.getElementById("alarm-form").addEventListener("submit", function(event) {
-      event.preventDefault();
-      var timeInput = document.getElementById("alarm-time");
-      var timeString = timeInput.value;
-      var now = new Date();
-      var [hours, minutes] = timeString.split(":");
-      alarmTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
-    });
+document.getElementById("alarm-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  var timeInput = document.getElementById("alarm-time");
+  var timeString = timeInput.value;
+  var now = new Date();
+  var [hours, minutes] = timeString.split(":");
+  alarmTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+});
 
-    function checkAlarm() {
-      var currentTime = new Date();
-      if (alarmTime && currentTime >= alarmTime) {
-        document.body.style.backgroundColor = document.body.style.backgroundColor == "red" ? "blue" : "red";
-    alarmTime.setDate(alarmTime.getDate() + 1); // adicione mais um dia ao alarme para que ele continue a disparar
-  }
-  const cancelButton = document.querySelector('.cancel-alarm');
-  cancelButton.addEventListener('click', cancelAlarm);
-  function cancelAlarm() {
-    document.querySelector('#alarm-time').value = '';
-  }
-
-  setTimeout(checkAlarm, 1000);
+function stopColorChange() {
+  clearInterval(colorInterval);
+  document.body.style.backgroundColor = ""; // Volta para a cor original (definida no CSS ou em outro lugar)
 }
 
-checkAlarm();
+
+function checkAlarm() {
+  var currentTime = new Date();
+  if (alarmTime && currentTime >= alarmTime) {
+   var body = document.body;
+var colors = ["blue", "red", "yellow"];
+var colorIndex = 0;
+
+function changeColor() {
+  body.style.backgroundColor = colors[colorIndex];
+  colorIndex = (colorIndex + 1) % colors.length;
+}
+
+setInterval(changeColor, 1000);
+
+    alarmTime.setDate(alarmTime.getDate() + 1); // add one day to the alarm to make it repeat
+  }
+}
+const cancelButton = document.querySelector('.cancel-alarm');
+cancelButton.addEventListener('click', cancelAlarm);
+function cancelAlarm() {
+  document.querySelector('#alarm-time').value = '';
+}
+
+setInterval(checkAlarm, 1000);
+
 
 </script>
 <div>
