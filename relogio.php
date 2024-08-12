@@ -220,7 +220,7 @@ setInterval(checkAlarm, 1000);
   
   <button onclick="alternarDiv()" id="botao">Mostrar</button>
 
-  <div id="cont_1a99219bfe1681b8112996083265a113"><script type="text/javascript" async src="https://www.tempo.com/wid_loader/1a99219bfe1681b8112996083265a113"></script></div>
+  <div class="no-border" id="cont_1a99219bfe1681b8112996083265a113"><script type="text/javascript" async src="https://www.tempo.com/wid_loader/1a99219bfe1681b8112996083265a113"></script></div>
 </div>
  <!-- <div class="clima">
    <div id="ww_3cb086f2ec02b" v='1.3' loc='id' a='{"t":"responsive","lang":"pt","sl_lpl":1,"ids":["wl3184"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF","cl_font":"#000000","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","cl_odd":"#0000000a"}'><a href="https://weatherwidget.org/ru/" id="ww_3cb086f2ec02b_u" target="_blank">Бесплатный информер погоды для сайта</a></div><script async src="https://app1.weatherwidget.org/js/?id=ww_3cb086f2ec02b"></script>  -->

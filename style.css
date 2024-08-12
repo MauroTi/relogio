@@ -101,7 +101,7 @@
       margin-bottom: 18vw;
       width: 100%;
       height: 10vh;
-      background-color: #f4f4f4;
+      background-color: #fff;
       text-align: center;
       padding: 10px;
       box-sizing: border-box;
@@ -148,6 +148,10 @@
       padding: 0;
     }
 
+    .no-border {
+      border:none !important;
+    }
+
 
 
     /*.cancel-alarm {
@@ -158,6 +162,26 @@
       font-size: 16px;
       cursor: pointer;
     }*/
+
+@media screen and (min-width: 900px) {
+      #logo {
+        width: 100%;
+      }
+
+      #clock {
+        font-size: 8vw !important;
+      }
+
+      #clock input {
+        font-size: 12vw;
+      }
+
+      #rodape {
+        margin-bottom: 12vw;
+        margin-top: 1vw;
+      }
+    }
+
     @media screen and (max-width: 768px) {
       #logo {
         width: 100%;
