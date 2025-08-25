@@ -14,7 +14,7 @@
       <label for="datetime" style="display: none;"></label>
     </div>
     <div id="clock">
-      <input type="text" name="datetime" id="datetime" value="" readonly style="border: none; font-size: 8vw; text-align: center;">
+      <input type="text" name="datetime" id="datetime" value="" readonly style="border: none; font-size: 6vw; text-align: center;">
     </div>
 
     <form id="alarm-form">
